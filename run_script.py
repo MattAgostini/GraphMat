@@ -81,7 +81,7 @@ def collectGraphs(app, threads, optionalArgs = []):
                 runCommand(f'echo -n "{app},{threacount},{graph}," | cat - tmp_out3 >> {out_file}')
             else:
                 runCommand(f'awk \'$1 == "Time" {{print $3}}\' tmp_out > tmp_out2')
-                runCommand(f'echo -n "{app},{threacount},{graph},1," | cat - tmp_out2 >> {out_file}')
+                runCommand(f'echo -n "{app},{threacount},{graph},1," | cat - tmp_out2 >> {out_file}\n')
 
 threads = [4, 8]
 opt_args = {
