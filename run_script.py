@@ -78,10 +78,12 @@ def collectGraphs(app, threads, optionalArgs = []):
                 runCommand(f'echo "," >> tmp_out2')
                 runCommand(f'awk \'$1 == "PR" {{print $4}}\' tmp_out >> tmp_out2')
                 runCommand(f'tr -d \'\\n\' < tmp_out2 > tmp_out3')
+                runCommand(f'echo "\n" >> tmp_out3')
                 runCommand(f'echo -n "{app},{threacount},{graph}," | cat - tmp_out3 >> {out_file}')
+
             else:
                 runCommand(f'awk \'$1 == "Time" {{print $3}}\' tmp_out > tmp_out2')
-                runCommand(f'echo -n "{app},{threacount},{graph},1," | cat - tmp_out2 >> {out_file}\n')
+                runCommand(f'echo -n "{app},{threacount},{graph},1," | cat - tmp_out2 >> {out_file}')
 
 threads = [4, 8]
 opt_args = {
