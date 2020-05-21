@@ -78,7 +78,7 @@ def collectGraphs(app, threads, optionalArgs = []):
                 runCommand(f'echo "," >> tmp_out2')
                 runCommand(f'awk \'$1 == "PR" {{print $4}}\' tmp_out >> tmp_out2')
                 runCommand(f'tr -d \'\\n\' < tmp_out2 > tmp_out3')
-                runCommand(f'echo "\n" >> tmp_out3')
+                runCommand(f'echo "" >> tmp_out3')
                 runCommand(f'echo -n "{app},{threacount},{graph}," | cat - tmp_out3 >> {out_file}')
 
             else:
