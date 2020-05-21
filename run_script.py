@@ -20,7 +20,11 @@ for arg in sys.argv:
 
 graphs = [
     'as-skitter',
+    'orkut',
+    'higgs',
     'livejournal',
+    'pokec',
+    'stackoverflow',
 #    'twitter'
 ]
 
@@ -33,12 +37,20 @@ graph_prefix = {
 start_vertex = {
     'bfs' : {
         'as-skitter': 878248,
+        'orkut': 2062367,
+        'higgs': 165486,
         'livejournal': 3903641,
+        'pokec': 858951,
+        'stackoverflow': 5515818,
         'twitter': 15917685
     },
     'sssp' : {
         'as-skitter': 1538116,
+        'orkut': 376633,
+        'higgs': 132279,
         'livejournal': 4058811,
+        'pokec': 247882,
+        'stackoverflow': 3214351,
         'twitter': 23776767
     },
     'pr' : {}
