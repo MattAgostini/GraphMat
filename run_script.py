@@ -90,7 +90,7 @@ opt_args = {
     'pr': ['-i 1']
 }
 
-apps = ['bfs', 'sssp']
+apps = ['pr']
 
 if cli_app == '':
     for app in apps:
