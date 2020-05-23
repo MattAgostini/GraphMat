@@ -45,13 +45,13 @@ start_vertex = {
         'twitter': 15917685
     },
     'sssp' : {
-        'as-skitter': 1538116,
-        'orkut': 376633,
-        'higgs': 132279,
-        'livejournal': 4058811,
-        'pokec': 247882,
-        'stackoverflow': 3214351,
-        'twitter': 23776767
+        'as-skitter': 1538117,
+        'orkut': 376634,
+        'higgs': 132280,
+        'livejournal': 4058812,
+        'pokec': 247883,
+        'stackoverflow': 3214352,
+        'twitter': 23776768
     },
     'pr' : {}
 }
@@ -104,7 +104,7 @@ opt_args = {
     'pr': ['-i 1']
 }
 
-apps = ['bfs', 'sssp', 'pr']
+apps = ['sssp']
 
 if cli_app == '':
     for app in apps:
