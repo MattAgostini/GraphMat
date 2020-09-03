@@ -19,10 +19,10 @@ for arg in sys.argv:
         test_en = True
 
 graphs = [
-    #'as-skitter',
+    'as-skitter',
     #'orkut',
     #'higgs',
-    'livejournal',
+    #'livejournal',
     #'pokec',
     #'stackoverflow',
 ]
@@ -35,7 +35,7 @@ graph_prefix = {
 
 start_vertex = {
     'bfs' : {
-        'as-skitter': {878248},
+        'as-skitter': {878248, 1093773, 1040066, 1529161, 1105468, 1543502},
         'orkut': {2062367},
         'higgs': {165486},
         'livejournal': {3903641},
@@ -43,12 +43,12 @@ start_vertex = {
         'stackoverflow': {5515818},
     },
     'sssp' : {
-        'as-skitter': {1538117},
-        'orkut': {2503157},
-        'higgs': {132280},
+        'as-skitter': {1687786, 774221, 1672776, 324213, 411761, 554803},
+        'orkut': {376634, 2503157, 1941443, 742191, 1461469, 2082825},
+        'higgs': {132280, 206657, 418510, 197173, 213193, 11004},
         'livejournal': {2885370, 669595, 848204, 679577, 2735355, 2016862},
-        'pokec': {247883},
-        'stackoverflow': {3214352},
+        'pokec': {247883, 246034, 1092415, 720812, 255165, 139422},
+        'stackoverflow': {3214352, 2446214, 3198987, 1313603, 32229, 824046},
     },
     'pr' : {}
 }
@@ -81,6 +81,7 @@ def collectGraphs(app, threads, optionalArgs = []):
                 start_vtx = start_vertex[app][graph]
 
             for start_v in start_vtx:
+                start_v = start_v + 1 # Need this because GraphMat edges start at 1 instead of 0
 
             #for i in range(5):
 
