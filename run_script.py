@@ -81,7 +81,7 @@ def collectGraphs(app, threads, optionalArgs = []):
                 start_vtx = start_vertex[app][graph]
 
             for start_v in start_vtx:
-                start_v = start_v + 1 # Need this because GraphMat edges start at 1 instead of 0
+                #start_v = start_v + 1 # Need this because GraphMat edges start at 1 instead of 0
 
             #for i in range(5):
 
