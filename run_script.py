@@ -19,12 +19,12 @@ for arg in sys.argv:
         test_en = True
 
 graphs = [
-    'as-skitter',
-    'orkut',
-    'higgs',
+    #'as-skitter',
+    #'orkut',
+    #'higgs',
     'livejournal',
-    'pokec',
-    'stackoverflow',
+    #'pokec',
+    #'stackoverflow',
 ]
 
 graph_prefix = {
@@ -107,7 +107,9 @@ opt_args = {
     'pr': ['-i 1']
 }
 
-apps = ['bfs', 'sssp', 'pr']
+#apps = ['bfs', 'sssp', 'pr']
+apps = ['sssp']
+
 
 if cli_app == '':
     for app in apps:
