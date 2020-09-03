@@ -80,13 +80,13 @@ def collectGraphs(app, threads, optionalArgs = []):
             if graph in start_vertex[app]:
                 start_vtx = start_vertex[app][graph]
 
-            for start in start_vtx:
+            for start_v in start_vtx:
 
             #for i in range(5):
 
-                print(f'Running {app} with {threacount} thread(s) on {graphfile} with start {start_vtx}...')
+                print(f'Running {app} with {threacount} thread(s) on {graphfile} with start {start_v}...')
 
-                runCommand(f'{app_command[app]} {graphfile} {start_vtx} > tmp_out')
+                runCommand(f'{app_command[app]} {graphfile} {start_v} > tmp_out')
 
                 if app == 'pr':
                     runCommand(f'awk \'$1 == "Completed" {{print $2}}\' tmp_out | tail -n 1 > tmp_out2')
