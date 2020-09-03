@@ -83,7 +83,7 @@ def collectGraphs(app, threads, optionalArgs = []):
 
             #for i in range(5):
 
-            print(f'Running {app} with {threacount} thread(s) on {graph} with start {start_vtx}...')
+            print(f'Running {app} with {threacount} thread(s) on {graphfile} with start {start_vtx}...')
 
             runCommand(f'{app_command[app]} {graphfile} {start_vtx} > tmp_out')
 
