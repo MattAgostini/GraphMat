@@ -37,7 +37,7 @@ start_vertex = {
     'bfs' : {
         'as-skitter': {878248},
         'orkut': {2062367},
-        'higgs': {165486,}
+        'higgs': {165486},
         'livejournal': {3903641},
         'pokec': {858951},
         'stackoverflow': {5515818},
