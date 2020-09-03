@@ -25,7 +25,6 @@ graphs = [
     'livejournal',
     'pokec',
     'stackoverflow',
-#    'twitter'
 ]
 
 graph_prefix = {
@@ -69,6 +68,7 @@ def runCommand(command):
         os.system(command)
 
 def collectGraphs(app, threads, optionalArgs = []):
+
     for threacount in threads:
         # Set OMP numthreads
         os.environ[OMP_THREADS_ENV] = str(threacount)
@@ -81,7 +81,9 @@ def collectGraphs(app, threads, optionalArgs = []):
             if graph in start_vertex[app]:
                 start_vtx = start_vertex[app][graph]
 
-            print(f'Running {app} with {threacount} thread(s) on {graph} ...')
+            #for i in range(5):
+
+            print(f'Running {app} with {threacount} thread(s) on {graph} with start {start_vtx}...')
 
             runCommand(f'{app_command[app]} {graphfile} {start_vtx} > tmp_out')
 
