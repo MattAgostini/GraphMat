@@ -74,9 +74,9 @@ def runCommand(command):
 
 def collectGraphs(app, threads, optionalArgs = []):
 
-    for threacount in threads:
+    for threadcount in threads:
         # Set OMP numthreads
-        os.environ[OMP_THREADS_ENV] = str(threacount)
+        os.environ[OMP_THREADS_ENV] = str(threadcount)
 
         for graph in graphs:
             optional = ' '.join(optionalArgs)
@@ -91,7 +91,7 @@ def collectGraphs(app, threads, optionalArgs = []):
 
                 for i in range(5): # Doing each start vertex 5 times
 
-                    print(f'Running {app} with {threacount} thread(s) on {graphfile} with start {start_v}...')
+                    print(f'Running {app} with {threadcount} thread(s) on {graphfile} with start {start_v}...')
 
                     runCommand(f'{app_command[app]} {graphfile} {start_v} > tmp_out')
 
@@ -101,11 +101,11 @@ def collectGraphs(app, threads, optionalArgs = []):
                         runCommand(f'awk \'$1 == "PR" {{print $4}}\' tmp_out >> tmp_out2')
                         runCommand(f'tr -d \'\\n\' < tmp_out2 > tmp_out3')
                         runCommand(f'echo "" >> tmp_out3')
-                        runCommand(f'echo -n "{app},{threacount},{graph}," | cat - tmp_out3 >> {out_file}')
+                        runCommand(f'echo -n "{app},{threadcount},{graph}," | cat - tmp_out3 >> {out_file}')
 
                     else:
                         runCommand(f'awk \'$1 == "Time" {{print $3}}\' tmp_out > tmp_out2')
-                        runCommand(f'echo -n "{app},{threacount},{graph},1," | cat - tmp_out2 >> {out_file}')
+                        runCommand(f'echo -n "{app},{threadcount},{graph},1," | cat - tmp_out2 >> {out_file}')
 
 #threads = [4, 8, 14]
 threads = [14]
