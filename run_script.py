@@ -41,16 +41,14 @@ start_vertex = {
         'livejournal': 3903641,
         'pokec': 858951,
         'stackoverflow': 5515818,
-        'twitter': 15917685
     },
     'sssp' : {
         'as-skitter': 1538117,
-        'orkut': 376634,
+        'orkut': 2503157,
         'higgs': 132280,
-        'livejournal': 4058812,
+        'livejournal': 2885370,
         'pokec': 247883,
         'stackoverflow': 3214352,
-        'twitter': 23776768
     },
     'pr' : {}
 }
@@ -81,35 +79,32 @@ def collectGraphs(app, threads, optionalArgs = []):
             if graph in start_vertex[app]:
                 start_vtx = start_vertex[app][graph]
 
-            #for i in range(5):
+            for i in range(5):
 
-            print(f'Running {app} with {threacount} thread(s) on {graphfile} with start {start_vtx}...')
+                print(f'Running {app} with {threacount} thread(s) on {graphfile} with start {start_vtx}...')
 
-            runCommand(f'{app_command[app]} {graphfile} {start_vtx} > tmp_out')
+                runCommand(f'{app_command[app]} {graphfile} {start_vtx} > tmp_out')
 
-            if app == 'pr':
-                runCommand(f'awk \'$1 == "Completed" {{print $2}}\' tmp_out | tail -n 1 > tmp_out2')
-                runCommand(f'echo "," >> tmp_out2')
-                runCommand(f'awk \'$1 == "PR" {{print $4}}\' tmp_out >> tmp_out2')
-                runCommand(f'tr -d \'\\n\' < tmp_out2 > tmp_out3')
-                runCommand(f'echo "" >> tmp_out3')
-                runCommand(f'echo -n "{app},{threacount},{graph}," | cat - tmp_out3 >> {out_file}')
+                if app == 'pr':
+                    runCommand(f'awk \'$1 == "Completed" {{print $2}}\' tmp_out | tail -n 1 > tmp_out2')
+                    runCommand(f'echo "," >> tmp_out2')
+                    runCommand(f'awk \'$1 == "PR" {{print $4}}\' tmp_out >> tmp_out2')
+                    runCommand(f'tr -d \'\\n\' < tmp_out2 > tmp_out3')
+                    runCommand(f'echo "" >> tmp_out3')
+                    runCommand(f'echo -n "{app},{threacount},{graph}," | cat - tmp_out3 >> {out_file}')
 
-            else:
-                runCommand(f'awk \'$1 == "Time" {{print $3}}\' tmp_out > tmp_out2')
-                runCommand(f'echo -n "{app},{threacount},{graph},1," | cat - tmp_out2 >> {out_file}')
+                else:
+                    runCommand(f'awk \'$1 == "Time" {{print $3}}\' tmp_out > tmp_out2')
+                    runCommand(f'echo -n "{app},{threacount},{graph},1," | cat - tmp_out2 >> {out_file}')
 
-#threads = [4, 8, 14]
-threads = [14]
+threads = [4, 8, 14]
 opt_args = {
     'bfs': [],
     'sssp': [],
     'pr': ['-i 1']
 }
 
-#apps = ['bfs', 'sssp', 'pr']
-apps = ['sssp']
-
+apps = ['bfs', 'sssp', 'pr']
 
 if cli_app == '':
     for app in apps:
