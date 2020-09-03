@@ -87,7 +87,7 @@ def collectGraphs(app, threads, optionalArgs = []):
                 start_vtx = start_vertex[app][graph]
 
             for start_v in start_vtx:
-                start_v = start_v + 1 # Need this because GraphMat edges start at 1 instead of 0
+                if (app != 'bfs'): start_v = start_v + 1 # Need this because GraphMat edges start at 1 instead of 0
 
                 for i in range(5): # Doing each start vertex 5 times
 
@@ -115,7 +115,8 @@ opt_args = {
     'pr': ['-i 1']
 }
 
-apps = ['bfs', 'sssp', 'pr']
+#apps = ['bfs', 'sssp', 'pr']
+apps = ['bfs']
 
 if cli_app == '':
     for app in apps:
