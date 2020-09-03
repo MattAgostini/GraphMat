@@ -79,6 +79,8 @@ def collectGraphs(app, threads, optionalArgs = []):
             start_vtx = []
             if graph in start_vertex[app]:
                 start_vtx = start_vertex[app][graph]
+            else:
+                start_vtx = [0] # PageRank
 
             for start_v in start_vtx:
                 start_v = start_v + 1 # Need this because GraphMat edges start at 1 instead of 0
