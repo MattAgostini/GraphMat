@@ -35,20 +35,20 @@ graph_prefix = {
 
 start_vertex = {
     'bfs' : {
-        'as-skitter': 878248,
-        'orkut': 2062367,
-        'higgs': 165486,
-        'livejournal': 3903641,
-        'pokec': 858951,
-        'stackoverflow': 5515818,
+        'as-skitter': {878248},
+        'orkut': {2062367},
+        'higgs': {165486,}
+        'livejournal': {3903641},
+        'pokec': {858951},
+        'stackoverflow': {5515818},
     },
     'sssp' : {
-        'as-skitter': 1538117,
-        'orkut': 2503157,
-        'higgs': 132280,
-        'livejournal': 2885370,
-        'pokec': 247883,
-        'stackoverflow': 3214352,
+        'as-skitter': {1538117},
+        'orkut': {2503157},
+        'higgs': {132280},
+        'livejournal': {2885370, 669595, 848204, 679577, 2735355, 2016862},
+        'pokec': {247883},
+        'stackoverflow': {3214352},
     },
     'pr' : {}
 }
@@ -75,11 +75,14 @@ def collectGraphs(app, threads, optionalArgs = []):
             optional = ' '.join(optionalArgs)
             graphfile = 'graphs/' + graph_prefix[app] + graph + '.g'
 
-            start_vtx = ''
+
+            start_vtx = []
             if graph in start_vertex[app]:
                 start_vtx = start_vertex[app][graph]
 
-            for i in range(5):
+            for start in start_vtx:
+
+            #for i in range(5):
 
                 print(f'Running {app} with {threacount} thread(s) on {graphfile} with start {start_vtx}...')
 
@@ -104,7 +107,8 @@ opt_args = {
     'pr': ['-i 1']
 }
 
-apps = ['bfs', 'sssp', 'pr']
+#apps = ['bfs', 'sssp', 'pr']
+apps = ['bfs', 'sssp']
 
 if cli_app == '':
     for app in apps:
