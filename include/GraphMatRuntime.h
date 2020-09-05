@@ -42,8 +42,6 @@
 #include <assert.h>
 #endif
 
-#define __TIMING 1
-
 #include "Graph.h"
 #include "GraphProgram.h"
 #include "SPMV.h"
