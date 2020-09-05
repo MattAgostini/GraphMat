@@ -70,11 +70,13 @@ void SpMSpV(Graph<V,E>& G, const GraphProgram<T,U,V,E>* gp, GraphMat::SpVec<Grap
     GraphMat::SpMSpV(G.A, x, y, Mulfn<T,U,V,E>, Addfn<T,U,V,E>, (void*)gp);
   }
 
+  /*
   #ifdef __TIMING
   gettimeofday(&end, 0);
   double time = (end.tv_sec-start.tv_sec)*1e3+(end.tv_usec-start.tv_usec)*1e-3;
   printf("SPMSPV: time = %.3f ms \n", time);
   #endif
+  */
 }
 template <class T, class U, class V, class E>
 void SpMTSpV(Graph<V,E>& G, const GraphProgram<T,U,V,E>* gp, GraphMat::SpVec<GraphMat::DenseSegment<T> >* x, GraphMat::SpVec<GraphMat::DenseSegment<U> >* y) {
@@ -87,11 +89,13 @@ void SpMTSpV(Graph<V,E>& G, const GraphProgram<T,U,V,E>* gp, GraphMat::SpVec<Gra
     GraphMat::SpMSpV(G.AT, x, y, Mulfn<T,U,V,E>, Addfn<T,U,V,E>, (void*)gp);
   }
 
+  /*
   #ifdef __TIMING
   gettimeofday(&end, 0);
   double time = (end.tv_sec-start.tv_sec)*1e3+(end.tv_usec-start.tv_usec)*1e-3;
   printf("SPMTSPV: time = %.3f ms \n", time);
   #endif
+  */
 }
 
 } //namespace GraphMat
