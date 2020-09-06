@@ -47,6 +47,10 @@ void SpMSpV(const SpMat<SpTile<Ta> > * grida, SpVec<SpSegment<Tx> >* vecx,
   int end_m = grida->ntiles_y;
   int end_n = grida->ntiles_x;
 
+  #ifdef __TIMING
+  printf("\t\tInside SpMSpV\n");
+  #endif
+
   // Build list of row/column partners
   std::vector<std::set<int> > row_ranks;
   std::vector<std::set<int> > col_ranks;
