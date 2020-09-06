@@ -42,55 +42,25 @@ template <class T, class U, class V, class E>
 void Mulfn(const E& a, const T& b, U * c, void* gpv) { 
   GraphProgram<T,U,V,E>* gp = (GraphProgram<T,U,V,E>*) gpv;
   V dummy;
-
-  struct timeval start, end;
-  gettimeofday(&start, 0);
-
   gp->process_message(b, a, dummy, *c); 
-
-  #ifdef __TIMING
-  gettimeofday(&end, 0);
-  double time = (end.tv_sec-start.tv_sec)*1e3+(end.tv_usec-start.tv_usec)*1e-3;
-  printf("        Mult: time = %.3f ms \n", time);
-  #endif
 }
 
 template <class T, class U, class V, class E>
 void Mulfn(const E& a, const T& b, const V& v, U * c, void* gpv) { 
   GraphProgram<T,U,V,E>* gp = (GraphProgram<T,U,V,E>*) gpv;
-
-  struct timeval start, end;
-  gettimeofday(&start, 0);
-
   gp->process_message(b, a, v, *c); 
-
-  #ifdef __TIMING
-  gettimeofday(&end, 0);
-  double time = (end.tv_sec-start.tv_sec)*1e3+(end.tv_usec-start.tv_usec)*1e-3;
-  printf("        Mult: time = %.3f ms \n", time);
-  #endif
 }
 
 template <class T, class U, class V, class E>
 void Addfn(const U& a, const U& b, U * c, void* gpv) { 
   GraphProgram<T,U,V,E>* gp = (GraphProgram<T,U,V,E>*) gpv; 
   *c = a;
-
-  struct timeval start, end;
-  gettimeofday(&start, 0);
-
   gp->reduce_function(*c, b);
-
-  #ifdef __TIMING
-  gettimeofday(&end, 0);
-  double time = (end.tv_sec-start.tv_sec)*1e3+(end.tv_usec-start.tv_usec)*1e-3;
-  printf("        Add: time = %.3f ms \n", time);
-  #endif
 }
 
 
 template <class T, class U, class V, class E>
-void SpMSpV(Graph<V,E>& G, const GraphProgram<T,U,V,E>* gp, GraphMat::SpVec<GraphMat::DenseSegment<T> > * x, GraphMat::SpVec<GraphMat::DenseSegment<U> >* y) {
+void SpMSpV(Graph<V,E>& G, const GraphProgram<T,U,V,E>* gp, GraphMat::SpVec<GraphMat::DenseSegment<T> >* x, GraphMat::SpVec<GraphMat::DenseSegment<U> >* y) {
   struct timeval start, end;
   gettimeofday(&start, 0);
 
