@@ -122,6 +122,9 @@ void SpMSpV(const SpMat<SpTile<Ta> > * grida, SpVec<SpSegment<Tx> >* vecx,
   //spmspv_send_time += MPI_Wtime() - tmp_time;
   tmp_time = MPI_Wtime();
 
+  struct timeval start, end;
+  gettimeofday(&start, 0);
+
   // Multiply all tiles
   for (int i = start_m; i < end_m; i++) {
     for (int j = start_n; j < end_n; j++) {
@@ -132,6 +135,12 @@ void SpMSpV(const SpMat<SpTile<Ta> > * grida, SpVec<SpSegment<Tx> >* vecx,
     }
   }
 
+  #ifdef __TIMING
+  gettimeofday(&end, 0);
+  double time = (end.tv_sec-start.tv_sec)*1e3+(end.tv_usec-start.tv_usec)*1e-3;
+  printf("\t\tMultiple = %.3f ms \n", time);
+  #endif
+
   //spmspv_mult_time += MPI_Wtime() - tmp_time;
   tmp_time = MPI_Wtime();
 
@@ -141,6 +150,8 @@ void SpMSpV(const SpMat<SpTile<Ta> > * grida, SpVec<SpSegment<Tx> >* vecx,
       vecx->segments[j]->set_uninitialized();
     }
   }
+
+  gettimeofday(&start, 0);
 
   // Reduce across rows
   for (int i = start_m; i < end_m; i++) {
@@ -190,6 +201,12 @@ void SpMSpV(const SpMat<SpTile<Ta> > * grida, SpVec<SpSegment<Tx> >* vecx,
 
   //spmspv_reduce_send_time += MPI_Wtime() - tmp_time;
   tmp_time = MPI_Wtime();
+
+  #ifdef __TIMING
+  gettimeofday(&end, 0);
+  double time = (end.tv_sec-start.tv_sec)*1e3+(end.tv_usec-start.tv_usec)*1e-3;
+  printf("\t\tMultiple = %.3f ms \n", time);
+  #endif
 
   // Free any output vectors allocated during computation
   for (int i = start_m; i < end_m; i++) {
