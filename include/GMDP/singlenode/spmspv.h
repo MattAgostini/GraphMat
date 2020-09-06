@@ -230,7 +230,9 @@ void mult_segment(const DCSCTile<Ta>* tile, DenseSegment<Tx>* segmentx,
   segmenty->alloc();
   segmenty->initialize();
 
-  cout << "\t\tIn HERE1" << endl;
+  #ifdef __TIMING
+  printf("\t\tIn here 1\n");
+  #endif
 
   my_spmspv(tile->row_inds, tile->col_ptrs, tile->col_indices, tile->vals,
             tile->num_partitions, tile->row_pointers, tile->col_starts,
@@ -248,7 +250,9 @@ void mult_segment(const HybridTile<Ta>* tile, const DenseSegment<Tx> * segmentx,
   segmenty->alloc();
   segmenty->initialize();
 
-  cout << "\t\tIn HERE2" << endl;
+  #ifdef __TIMING
+  printf("\t\tIn here 2\n");
+  #endif
 
   int nnz = 0;
   if(tile->t1->nnz > 0)
@@ -275,7 +279,9 @@ void mult_segment(const CSRTile<Ta>* tile, const DenseSegment<Tx> * segmentx,
   segmenty->alloc();
   segmenty->initialize();
 
-  cout << "\t\tIn HERE3" << endl;
+  #ifdef __TIMING
+  printf("\t\tIn here 3\n");
+  #endif
 
   int nnz = 0;
   if(tile->nnz > 0)
@@ -295,7 +301,9 @@ void mult_segment(const COOTile<Ta>* tile, const DenseSegment<Tx>* segmentx,
   segmenty->alloc();
   segmenty->initialize();
 
-  cout << "\t\tIn HERE4" << endl;
+  #ifdef __TIMING
+  printf("\t\tIn here 4\n");
+  #endif
 
   int nnz = 0;
   if(tile->nnz > 0)
@@ -315,7 +323,9 @@ void mult_segment(const COOSIMD32Tile<Ta>* tile, const DenseSegment<Tx>* segment
   segmenty->alloc();
   segmenty->initialize();
 
-  cout << "\t\tIn HERE5" << endl;
+  #ifdef __TIMING
+  printf("\t\tIn here 5\n");
+  #endif
 
   int nnz = 0;
   if(tile->nnz > 0)
