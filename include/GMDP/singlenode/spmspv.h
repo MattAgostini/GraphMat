@@ -229,6 +229,9 @@ void mult_segment(const DCSCTile<Ta>* tile, DenseSegment<Tx>* segmentx,
                   void (*mul_fp)(const Ta&, const Tx&, Ty*, void*), void (*add_fp)(const Ty&, const Ty&, Ty*, void*), void* vsp) {
   segmenty->alloc();
   segmenty->initialize();
+
+  cout << "\t\tIn HERE1" << endl;
+
   my_spmspv(tile->row_inds, tile->col_ptrs, tile->col_indices, tile->vals,
             tile->num_partitions, tile->row_pointers, tile->col_starts,
             tile->edge_pointers, segmentx->properties->value, segmentx->properties->bit_vector,
@@ -244,6 +247,9 @@ void mult_segment(const HybridTile<Ta>* tile, const DenseSegment<Tx> * segmentx,
                   void (*mul_fp)(const Ta&, const Tx&, Ty*, void*), void (*add_fp)(const Ty&, const Ty&, Ty*, void*), void* vsp) {
   segmenty->alloc();
   segmenty->initialize();
+
+  cout << "\t\tIn HERE2" << endl;
+
   int nnz = 0;
   if(tile->t1->nnz > 0)
   {
@@ -268,6 +274,9 @@ void mult_segment(const CSRTile<Ta>* tile, const DenseSegment<Tx> * segmentx,
                   void (*mul_fp)(const Ta&, const Tx&, Ty*, void*), void (*add_fp)(const Ty&, const Ty&, Ty*, void*), void* vsp) {
   segmenty->alloc();
   segmenty->initialize();
+
+  cout << "\t\tIn HERE3" << endl;
+
   int nnz = 0;
   if(tile->nnz > 0)
   {
@@ -285,6 +294,9 @@ void mult_segment(const COOTile<Ta>* tile, const DenseSegment<Tx>* segmentx,
                   void (*mul_fp)(const Ta&, const Tx&, Ty*, void*), void (*add_fp)(const Ty&, const Ty&, Ty*, void*), void* vsp) {
   segmenty->alloc();
   segmenty->initialize();
+
+  cout << "\t\tIn HERE4" << endl;
+
   int nnz = 0;
   if(tile->nnz > 0)
   {
@@ -302,6 +314,9 @@ void mult_segment(const COOSIMD32Tile<Ta>* tile, const DenseSegment<Tx>* segment
                   void (*mul_fp)(const Ta&, const Tx&, Ty*, void*), void (*add_fp)(const Ty&, const Ty&, Ty*, void*), void* vsp) {
   segmenty->alloc();
   segmenty->initialize();
+
+  cout << "\t\tIn HERE5" << endl;
+
   int nnz = 0;
   if(tile->nnz > 0)
   {
