@@ -138,7 +138,7 @@ void SpMSpV(const SpMat<SpTile<Ta> > * grida, SpVec<SpSegment<Tx> >* vecx,
   #ifdef __TIMING
   gettimeofday(&end, 0);
   double time = (end.tv_sec-start.tv_sec)*1e3+(end.tv_usec-start.tv_usec)*1e-3;
-  printf("\t\tMultiple = %.3f ms \n", time);
+  printf("\t\tMultiply = %.3f ms \n", time);
   #endif
 
   //spmspv_mult_time += MPI_Wtime() - tmp_time;
@@ -204,8 +204,8 @@ void SpMSpV(const SpMat<SpTile<Ta> > * grida, SpVec<SpSegment<Tx> >* vecx,
 
   #ifdef __TIMING
   gettimeofday(&end, 0);
-  double time = (end.tv_sec-start.tv_sec)*1e3+(end.tv_usec-start.tv_usec)*1e-3;
-  printf("\t\tMultiple = %.3f ms \n", time);
+  time = (end.tv_sec-start.tv_sec)*1e3+(end.tv_usec-start.tv_usec)*1e-3;
+  printf("\t\tReduce = %.3f ms \n", time);
   #endif
 
   // Free any output vectors allocated during computation
