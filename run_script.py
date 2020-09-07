@@ -107,7 +107,9 @@ def collectGraphs(app, threads, optionalArgs = []):
                         runCommand(f'awk \'$1 == "Time" {{print $3}}\' tmp_out > tmp_out2')
                         runCommand(f'echo -n "{app},{threadcount},{graph},1," | cat - tmp_out2 >> {out_file}')
 
-threads = [4, 8, 14]
+#threads = [4, 8, 14]
+threads = [14]
+
 opt_args = {
     'bfs': [],
     'sssp': [],
