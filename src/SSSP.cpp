@@ -67,6 +67,9 @@ class SSSP : public GraphMat::GraphProgram<distance_type, distance_type, SSSP_ve
 
   SSSP() {
     this->order = GraphMat::OUT_EDGES;
+
+    this->activity = GraphMat::ALL_VERTICES;
+
     this->process_message_requires_vertexprop = false;
   }
 
@@ -111,8 +114,12 @@ void run_sssp(const char* filename, int v) {
   init.distance = 0; 
 
   SSSP_vertex_type inf; 
+
+  inf.distance = 10000000;
+  G.setAllActive();
+
   G.setAllVertexproperty(inf);
-  G.setAllInactive();
+  //G.setAllInactive();
 
   G.setVertexproperty(v, init);
   G.setActive(v);
