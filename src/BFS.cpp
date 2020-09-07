@@ -69,9 +69,6 @@ class BFS2 : public GraphMat::GraphProgram<unsigned long long int, unsigned long
   BFS2() {
     current_depth = 1;
     this->order = GraphMat::OUT_EDGES;
-
-                                                                this->activity = GraphMat::ALL_VERTICES;
-
     this->process_message_requires_vertexprop = false;
   }
 
