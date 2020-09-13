@@ -109,7 +109,7 @@ void run_bfs(char* filename, int v) {
   for(int i = 0 ; i < G.getNumberOfVertices() ; i++)
   {
     BFSD2 vp = G.getVertexproperty(i+1);
-    vp.id = i+1;
+    //vp.id = i+1;
     G.setVertexproperty(i+1, vp);
   }
   BFS2 b;
