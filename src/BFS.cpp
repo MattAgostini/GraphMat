@@ -40,13 +40,9 @@ depth_type MAX_DIST = std::numeric_limits<depth_type>::max();
 class BFSD2 {
   public: 
     depth_type depth;
-    unsigned long long int parent;
-    unsigned long long int id;
   public:
     BFSD2() {
       depth = MAX_DIST;
-      parent = -1;
-      id = -1;
     }
     bool operator != (const BFSD2& p) {
       return (this->depth != p.depth);
@@ -81,14 +77,13 @@ class BFS2 : public GraphMat::GraphProgram<unsigned long long int, unsigned long
   }
 
   bool send_message(const BFSD2& vertexprop, unsigned long long int& message) const {
-    message = vertexprop.id;
+    //message = vertexprop.id;
     return (vertexprop.depth == current_depth-1);
   }
 
   void apply(const unsigned long long int& message_out, BFSD2& vertexprop)  {
     if (vertexprop.depth == MAX_DIST) {
       vertexprop.depth = current_depth;
-      vertexprop.parent = message_out;
     }
   }
 
@@ -146,7 +141,7 @@ void run_bfs(char* filename, int v) {
   for (int i = 1; i <= std::min(10, G.getNumberOfVertices()); i++) {
     if (G.vertexNodeOwner(i))
     if (G.getVertexproperty(i).depth < MAX_DIST) {
-      printf("Depth %d : %d parent: %lld\n", i, G.getVertexproperty(i).depth, G.getVertexproperty(i).parent);
+      printf("Depth %d : %d\n", i, G.getVertexproperty(i).depth);
     }
     else {
       printf("Depth %d : INF \n", i);
