@@ -117,7 +117,7 @@ opt_args = {
 }
 
 #apps = ['bfs', 'sssp', 'pr']
-apps = ['bfs']
+apps = ['pr']
 
 if cli_app == '':
     for app in apps:

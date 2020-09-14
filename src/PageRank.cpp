@@ -55,7 +55,7 @@ class Degree : public GraphMat::GraphProgram<int, int, V, E> {
   public:
 
   Degree() {
-    this->order = GraphMat::IN_EDGES;
+    this->order = GraphMat::OUT_EDGES;
     this->process_message_requires_vertexprop = false;
   }
 
