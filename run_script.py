@@ -63,7 +63,7 @@ start_vertex = {
 app_command = {
     'bfs': 'bin/BFS',
     'sssp': 'bin/SSSP',
-    'pr': 'bin/PageRank'
+    #'pr': 'bin/PageRank'
 }
 
 def runCommand(command):
@@ -108,7 +108,7 @@ def collectGraphs(app, threads, optionalArgs = []):
                         runCommand(f'echo -n "{app},{threadcount},{graph},1," | cat - tmp_out2 >> {out_file}')
 
 #threads = [4, 8, 14]
-threads = [14]
+threads = [1, 4]
 
 opt_args = {
     'bfs': [],
